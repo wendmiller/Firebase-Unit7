@@ -13,7 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
   <!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
   <!-- Moment.js Reference -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -44,7 +44,7 @@
 
         <!-- Train List-->
         <div class="card mb-4">
-          <div class="card-header">Current Employees</div>
+          <div class="card-header"></div>
           <div class="card-body">
             <table class="table table-sm table-hover" id='employee-table'>
               <thead>
@@ -83,13 +83,13 @@
               </div>
               <div class="form-group">
                 <label for="rate-input">First Train Time (HH:mm - military time)</label>
-                <input class="form-control" id="first-train-input" placeholder="5:30 PM" type="text">
+                <input class="form-control" id="first-train-input" placeholder="5:30" type="text">
               </div>
               <div class="form-group">
                 <label for="rate-input">Frequency (min)</label>
-                <input class="form-control" id="first-train-input" placeholder="60 mins" type="text">
+                <input class="form-control" id="first-train-input" placeholder="60" type="text">
               </div>
-              <button class="btn btn-primary float-right" id="frequency-input-btn">Submit</button>
+              <button class="btn btn-primary float-right" id="add-train-btn">Submit</button>
             </form>
 
           </div>

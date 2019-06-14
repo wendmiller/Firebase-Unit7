@@ -8,17 +8,21 @@
 // 5. Calculate Total billed
 
 // 1. Initialize Firebase
-var config = {
-  apiKey: "AIzaSyA_QypGPkcjPtylRDscf7-HQl8ribnFeIs",
-  authDomain: "fir-unit7.firebaseapp.com",
-  databaseURL: "https://fir-unit7.firebaseio.com",
-  storageBucket: "gs://fir-unit7.appspot.com"
-};
+$(document).ready(function(){
 
+  var firebaseConfig = {
+    apiKey: "AIzaSyDzM-qV1409TehAQBMaEsjms-9l1xiuOR0",
+    authDomain: "project2-1af23.firebaseapp.com",
+    databaseURL: "https://project2-1af23.firebaseio.com",
+    projectId: "project2-1af23",
+    storageBucket: "project2-1af23.appspot.com",
+    messagingSenderId: "308168833454",
+    appId: "1:308168833454:web:dbbdc17f51a54aa6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
-firebase.initializeApp(config);
-
-var database = firebase.database();
+// var database = firebase.database();
 
 // 2. Button for adding Employees
 $("#add-train-btn").on("click", function(event) {
@@ -28,7 +32,7 @@ $("#add-train-btn").on("click", function(event) {
   var trainName = $("#train-name-input").val().trim();
   var desName = $("#destination-input").val().trim();
   var trainStart = moment($("#first-train-input").val().trim(), "HH:mm").format("X");
-  var frequency = $("#frequency-input").val().trim();
+  var frequency = $("#add-train-btn").val().trim();
 
   // Creates local "temporary" object for holding employee data
   var newTrain = {
@@ -96,10 +100,4 @@ database.ref().on("child_added", function(childSnapshot) {
   $("#train-table > tbody").append(newRow);
 });
 
-// Example Time Math
-// -----------------------------------------------------------------------------
-// Assume Employee start date of January 1, 2015
-// Assume current date is March 1, 2016
-
-// We know that this is 15 months.
-// Now we will create code in moment.js to confirm that any attempt we use meets this test case
+});
