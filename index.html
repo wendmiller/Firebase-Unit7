@@ -29,7 +29,7 @@
 
 <body>
 
-  <!-- Employee Tracker -->
+  <!-- Train Tracker -->
   <div class="container">
 
     <!-- Jumbotron -->
@@ -42,7 +42,7 @@
 
       <div class="col-md-12">
 
-        <!-- Current Employees-->
+        <!-- Train List-->
         <div class="card mb-4">
           <div class="card-header">Current Employees</div>
           <div class="card-body">
@@ -66,7 +66,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <!-- Add Employee  -->
+        <!-- Add Train  -->
         <div class="card mb-4">
           <div class="card-header">Add Train</div>
           <div class="card-body">
@@ -85,7 +85,11 @@
                 <label for="rate-input">First Train Time (HH:mm - military time)</label>
                 <input class="form-control" id="first-train-input" placeholder="5:30 PM" type="text">
               </div>
-              <button class="btn btn-primary float-right" id="frequency-input-btn">Frequency (mm)</button>
+              <div class="form-group">
+                <label for="rate-input">Frequency (min)</label>
+                <input class="form-control" id="first-train-input" placeholder="60 mins" type="text">
+              </div>
+              <button class="btn btn-primary float-right" id="frequency-input-btn">Submit</button>
             </form>
 
           </div>
