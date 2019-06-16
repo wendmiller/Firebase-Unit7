@@ -54,9 +54,9 @@ database.ref().on("child_added", function(childSnapshot) {
 
 
   var trainName = childSnapshot.val().name;
-  var desName = childSnapshot.val().role;
+  var desName = childSnapshot.val().desName;
   var trainStart = childSnapshot.val().start;
-  var frequency = childSnapshot.val().rate;
+  var frequency = childSnapshot.val().frequency;
 
 
   console.log(trainName);
@@ -74,14 +74,42 @@ database.ref().on("child_added", function(childSnapshot) {
 
   var minAway = trainStart * frequency;
   console.log(minAway);
+  
+  // instead of "minAway", I used the formula in the readme.  Adding that here very quickly -- cleanup as needed?
+  var tFrequency = frequency;
+  var firstTime = trainStart;
 
+  //1:00PM 
+  // First Time (pushed back 1 year to make sure it comes before current time) 
+  // I just copied this in and changed the "HH:mm" to "X" since firstTime is a timestamp instead
+  var firstTimeConverted = moment(firstTime, "X").subtract(1, "years"); 
+  console.log("FirstTimeConverted: " + firstTimeConverted); 
+
+  // Current Time 
+  var currentTime = moment(); 
+  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm A")); 
+  // Difference between the times 
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes"); 
+  console.log("DIFFERENCE IN TIME: " + diffTime); 
+
+  // Time apart (remainder) 
+  var tRemainder = diffTime % tFrequency; 
+  console.log("THIS IS THE TREMAINDER VAL: "+tRemainder); 
+
+  // Minute Until Train 
+  var tMinutesTillTrain = tFrequency - tRemainder; 
+  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain); 
+  // Next Train 
+  var nextTrain = moment().add(tMinutesTillTrain, "minutes"); 
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm "));
 
   var newRow = $("<tr>").append(
     $("<td>").text(trainName),
     $("<td>").text(desName),
     $("<td>").text(frequency),
-    $("<td>").text(trainStartPretty),
-    $("<td>").text(minAway)
+    //$("<td>").text(trainStartPretty), // add another column for this maybe?
+    $("<td>").text(nextTrain.format("hh:mm A")), // this is the NextArrival value
+    $("<td>").text(tMinutesTillTrain)
   );
 
   $("#train-table > tbody").append(newRow);
