@@ -67,21 +67,15 @@ database.ref().on("child_added", function(childSnapshot) {
 
   var trainStartPretty = moment.unix(trainStart).format("HH:mm");
 
- 
-  var frequency = moment().diff(moment(trainStart, "X"), "minutes");
-  console.log(frequency);
-
 
   var minAway = trainStart * frequency;
   console.log(minAway);
   
-  // instead of "minAway", I used the formula in the readme.  Adding that here very quickly -- cleanup as needed?
+
   var tFrequency = frequency;
   var firstTime = trainStart;
 
-  //1:00PM 
-  // First Time (pushed back 1 year to make sure it comes before current time) 
-  // I just copied this in and changed the "HH:mm" to "X" since firstTime is a timestamp instead
+
   var firstTimeConverted = moment(firstTime, "X").subtract(1, "years"); 
   console.log("FirstTimeConverted: " + firstTimeConverted); 
 
